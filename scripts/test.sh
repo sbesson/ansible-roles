@@ -2,13 +2,13 @@
 
 if [[ -f molecule.yml ]]; then
     molecule test
-else if [[ -d molecule ]]; then
+elif [[ -d molecule ]]; then
     if molecule list -s travis; then
         molecule test -s travis
     else
         molecule test --all
     fi
-else
+elif
     ### From .travis.yml of the non-molecule roles
     # Create ansible.cfg with correct roles_path
     printf '[defaults]\nroles_path=../' >ansible.cfg
