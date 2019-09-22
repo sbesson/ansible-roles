@@ -14,13 +14,11 @@ script:
 
 matrix:
   include:
-  - python: "3.5"
+  - python: "3.6"
     env: ROLE=ansible-role-basedeps PACKAGE=ome-ansible-molecule/
-  - python: "2.7"
-    env: ROLE=ansible-role-deploy-archive PACKAGE=ome-ansible-molecule/
-  - python: "3.5"
+  - python: "3.6"
     env: ROLE=ansible-role-deploy-archive PACKAGE=ome-ansible-molecule/
   - python: "2.7"
     env: ROLE=ansible-role-analysis-tools PACKAGE=ome-ansible-molecule-dependencies
-  - python: "3.5"
+  - python: "3.6"
     env:  ROLE=ansible-role-nfs-mount PACKAGE=ome-ansible-molecule/
