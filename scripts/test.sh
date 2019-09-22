@@ -8,7 +8,7 @@ elif [[ -d molecule ]]; then
     else
         molecule test --all
     fi
-elif
+else
     ### From .travis.yml of the non-molecule roles
     # Create ansible.cfg with correct roles_path
     printf '[defaults]\nroles_path=../' >ansible.cfg
