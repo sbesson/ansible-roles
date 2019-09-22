@@ -5,32 +5,22 @@ language: python
 services:
   - docker
 
-python: "2.7"
-
-cache: pip
-
-virtualenv:
-  system_site_packages: false
-
 install:
 - pip install --upgrade setuptools
-- pip install ome-ansible-molecule/
+- pip install $PACKAGE
 
 script:
 - cd $ROLE && ../scripts/test.sh
 
-env:
- - ROLE=ansible-role-basedeps
- - ROLE=ansible-role-deploy-archive
- - ROLE=ansible-role-haproxy
- - ROLE=ansible-role-ice
- - ROLE=ansible-role-java
- - ROLE=ansible-role-nginx-proxy
- - ROLE=ansible-role-nginx
- - ROLE=ansible-role-omego
- - ROLE=ansible-role-omero-common
- - ROLE=ansible-role-omero-python-deps
- - ROLE=ansible-role-postgresql
- - ROLE=ansible-role-python-pydata
- - ROLE=ansible-role-ssl-certificate
- - ROLE=ansible-role-versioncontrol-utils
+matrix:
+  include:
+  - python: "3.5"
+    env: ROLE=ansible-role-basedeps PACKAGE=ome-ansible-molecule/
+  - python: "2.7"
+    env: ROLE=ansible-role-deploy-archive PACKAGE=ome-ansible-molecule/
+  - python: "3.5"
+    env: ROLE=ansible-role-deploy-archive PACKAGE=ome-ansible-molecule/
+  - python: "2.7"
+    env: ROLE=ansible-role-analysis-tools PACKAGE=ome-ansible-molecule-dependencies
+  - python: "3.5"
+    env:  ROLE=ansible-role-nfs-mount PACKAGE=ome-ansible-molecule/
