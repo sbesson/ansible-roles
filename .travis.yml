@@ -5,16 +5,9 @@ language: python
 services:
   - docker
 
-python: "2.7"
-
-cache: pip
-
-virtualenv:
-  system_site_packages: false
-
 install:
 - pip install --upgrade setuptools
-- pip install ome-ansible-molecule-dependencies/
+- if [ -d "$ROLE/molecule" ]; then pip install ome-ansible-molecule-dependencies/ else pip install ome-ansible-molecule; fi
 
 script:
 # Some roles can't be properly tested in Docker

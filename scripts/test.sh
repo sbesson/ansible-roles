@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ -f molecule.yml ]];
+if [[ -f molecule.yml  || -d molecule ]];
 then
     molecule test
 else
