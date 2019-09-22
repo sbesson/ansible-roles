@@ -7,7 +7,7 @@ services:
 
 install:
 - pip install --upgrade setuptools
-- if [ -d "$ROLE/molecule" ]; then pip install ome-ansible-molecule-dependencies/ else pip install ome-ansible-molecule; fi
+- if [[ -d "$ROLE/molecule" ]]; then pip install ome-ansible-molecule-dependencies/; else pip install ome-ansible-molecule; fi
 
 script:
 # Some roles can't be properly tested in Docker
